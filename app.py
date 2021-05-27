@@ -186,6 +186,6 @@ async def logout(request: Request):
     return RedirectResponse(url='/')
 
 
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, port=8000, reload=True)
+# if __name__ == '__main__':
+#     import uvicorn
+#     uvicorn.run(app, port=8000, reload=True)
