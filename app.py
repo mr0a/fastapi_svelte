@@ -117,6 +117,7 @@ class ConnectionManager:
         await websocket.send_json(message)
 
     async def broadcast(self, message: str):
+        self.sent_connections = []
         self.Questions.append(message)
         for connection in self.active_connections:
             await connection.send_json(message)
@@ -160,7 +161,6 @@ async def websocket_endpoint(websocket: WebSocket):
             try:
                 if data['new_question'] == True:
                     await manager.broadcast(data)
-                    manager.sent_connections = []
                     # await manager.send_personal_message(f"You wrote: {data}", websocket)
             except Exception as e:
                 print(e)
