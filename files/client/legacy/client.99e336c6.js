@@ -3208,27 +3208,27 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 var ignore = [/^\/blog\.json$/, /^\/blog\/([^/]+?)\.json$/];
 var components = [{
   js: function js() {
-    return Promise.all([import('./index.216b054f.js'), __inject_styles(["client-50cbf21a.css","index-72b60456.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.ad56c06c.js'), __inject_styles(["client-50cbf21a.css","index-72b60456.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./about.5d69498c.js'), __inject_styles(["client-50cbf21a.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./about.dbc31f05.js'), __inject_styles(["client-50cbf21a.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.f756065b.js'), __inject_styles(["client-50cbf21a.css","index-48ded9d9.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.cd610bb3.js'), __inject_styles(["client-50cbf21a.css","index-48ded9d9.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./[slug].846b4830.js'), __inject_styles(["client-50cbf21a.css","[slug]-75d8a2a2.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./[slug].9b073a87.js'), __inject_styles(["client-50cbf21a.css","[slug]-75d8a2a2.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./form.c52ccd2d.js'), __inject_styles(["client-50cbf21a.css","form-bb8d1d26.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./form.a9efb681.js'), __inject_styles(["client-50cbf21a.css","form-bb8d1d26.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./quiz.a47c8420.js'), __inject_styles(["client-50cbf21a.css","quiz-33b73610.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./quiz.1ba6f9b6.js'), __inject_styles(["client-50cbf21a.css","quiz-33b73610.css"])]).then(function(x) { return x[0]; });
   }
 }];
 var routes = function (d) {
