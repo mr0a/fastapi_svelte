@@ -1223,6 +1223,10 @@ function afterUpdate(fn) {
   get_current_component().$$.after_update.push(fn);
 }
 
+function onDestroy(fn) {
+  get_current_component().$$.on_destroy.push(fn);
+}
+
 function setContext(key, context) {
   get_current_component().$$.context.set(key, context);
 }
@@ -3204,27 +3208,27 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 var ignore = [/^\/blog\.json$/, /^\/blog\/([^/]+?)\.json$/];
 var components = [{
   js: function js() {
-    return Promise.all([import('./index.3e0dd2e1.js'), __inject_styles(["client-50cbf21a.css","index-72b60456.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.216b054f.js'), __inject_styles(["client-50cbf21a.css","index-72b60456.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./about.0284e2ca.js'), __inject_styles(["client-50cbf21a.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./about.5d69498c.js'), __inject_styles(["client-50cbf21a.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./index.5b608ccf.js'), __inject_styles(["client-50cbf21a.css","index-48ded9d9.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.f756065b.js'), __inject_styles(["client-50cbf21a.css","index-48ded9d9.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./[slug].4cea42de.js'), __inject_styles(["client-50cbf21a.css","[slug]-75d8a2a2.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./[slug].846b4830.js'), __inject_styles(["client-50cbf21a.css","[slug]-75d8a2a2.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./form.6ea3c431.js'), __inject_styles(["client-50cbf21a.css","form-bb8d1d26.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./form.c52ccd2d.js'), __inject_styles(["client-50cbf21a.css","form-bb8d1d26.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./quiz.716ae122.js'), __inject_styles(["client-50cbf21a.css","quiz-33b73610.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./quiz.a47c8420.js'), __inject_styles(["client-50cbf21a.css","quiz-33b73610.css"])]).then(function(x) { return x[0]; });
   }
 }];
 var routes = function (d) {
@@ -4158,6 +4162,6 @@ start$1({
   target: document.querySelector('#sapper')
 });
 
-export { destroy_each as A, regenerator as B, listen_dev as C, prevent_default as D, run_all as E, onMount as F, globals as G, writable as H, get_binding_group_value as I, prop_dev as J, empty as K, transition_out as L, check_outros as M, transition_in as N, validate_store as O, component_subscribe as P, group_outros as Q, create_component as R, SvelteComponentDev as S, claim_component as T, mount_component as U, destroy_component as V, _inherits as _, _getPrototypeOf as a, _possibleConstructorReturn as b, _classCallCheck as c, _assertThisInitialized as d, dispatch_dev as e, space as f, element as g, detach_dev as h, init$1 as i, claim_space as j, claim_element as k, children as l, claim_text as m, attr_dev as n, add_location as o, insert_dev as p, query_selector_all as q, append_dev as r, safe_not_equal as s, text as t, noop as u, validate_slots as v, _createClass as w, validate_each_argument as x, set_data_dev as y, _slicedToArray as z };
+export { destroy_each as A, regenerator as B, listen_dev as C, prevent_default as D, run_all as E, onMount as F, onDestroy as G, globals as H, writable as I, get_binding_group_value as J, prop_dev as K, empty as L, transition_out as M, check_outros as N, transition_in as O, validate_store as P, component_subscribe as Q, group_outros as R, SvelteComponentDev as S, create_component as T, claim_component as U, mount_component as V, destroy_component as W, _inherits as _, _getPrototypeOf as a, _possibleConstructorReturn as b, _classCallCheck as c, _assertThisInitialized as d, dispatch_dev as e, space as f, element as g, detach_dev as h, init$1 as i, claim_space as j, claim_element as k, children as l, claim_text as m, attr_dev as n, add_location as o, insert_dev as p, query_selector_all as q, append_dev as r, safe_not_equal as s, text as t, noop as u, validate_slots as v, _createClass as w, validate_each_argument as x, set_data_dev as y, _slicedToArray as z };
 
 import __inject_styles from './inject_styles.fe622066.js';

@@ -1,4 +1,4 @@
-import { _ as _inherits, a as _getPrototypeOf, b as _possibleConstructorReturn, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, v as validate_slots, g as element, t as text, f as space, k as claim_element, l as children, m as claim_text, h as detach_dev, j as claim_space, n as attr_dev, o as add_location, p as insert_dev, r as append_dev, u as noop, H as writable, w as _createClass, C as listen_dev, D as prevent_default, z as _slicedToArray, y as set_data_dev, E as run_all, I as get_binding_group_value, x as validate_each_argument, J as prop_dev, K as empty, A as destroy_each, L as transition_out, M as check_outros, N as transition_in, O as validate_store, P as component_subscribe, F as onMount, G as globals, Q as group_outros, R as create_component, T as claim_component, U as mount_component, V as destroy_component } from './client.e2814c65.js';
+import { _ as _inherits, a as _getPrototypeOf, b as _possibleConstructorReturn, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, v as validate_slots, g as element, t as text, f as space, k as claim_element, l as children, m as claim_text, h as detach_dev, j as claim_space, n as attr_dev, o as add_location, p as insert_dev, r as append_dev, u as noop, I as writable, w as _createClass, C as listen_dev, D as prevent_default, z as _slicedToArray, y as set_data_dev, E as run_all, J as get_binding_group_value, x as validate_each_argument, K as prop_dev, L as empty, A as destroy_each, M as transition_out, N as check_outros, O as transition_in, P as validate_store, Q as component_subscribe, F as onMount, G as onDestroy, H as globals, R as group_outros, T as create_component, U as claim_component, V as mount_component, W as destroy_component } from './client.56a8e490.js';
 
 function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -943,7 +943,7 @@ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflec
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var console_1 = globals.console;
-var file = "src\\routes\\quiz.svelte"; // (41:4) {:else}
+var file = "src\\routes\\quiz.svelte"; // (46:4) {:else}
 
 function create_else_block(ctx) {
   var loading;
@@ -980,11 +980,11 @@ function create_else_block(ctx) {
     block: block,
     id: create_else_block.name,
     type: "else",
-    source: "(41:4) {:else}",
+    source: "(46:4) {:else}",
     ctx: ctx
   });
   return block;
-} // (39:4) {#if message}
+} // (44:4) {#if message}
 
 
 function create_if_block(ctx) {
@@ -1038,7 +1038,7 @@ function create_if_block(ctx) {
     block: block,
     id: create_if_block.name,
     type: "if",
-    source: "(39:4) {#if message}",
+    source: "(44:4) {#if message}",
     ctx: ctx
   });
   return block;
@@ -1075,7 +1075,7 @@ function create_fragment(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(div, file, 37, 0, 1183);
+      add_location(div, file, 42, 0, 1315);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -1147,6 +1147,7 @@ function instance($$self, $$props, $$invalidate) {
   var socket;
   var message;
   var isLoggedIn;
+  var url = window.location.host;
   onMount(function () {
     isLoggedIn = localStorage.getItem("email");
 
@@ -1156,7 +1157,7 @@ function instance($$self, $$props, $$invalidate) {
     }
 
     isLoggedIn ? "" : getData();
-    socket = new WebSocket("ws://127.0.0.1:8000/ws/demo");
+    socket = new WebSocket("ws://".concat(url, "/ws/demo"));
     isLoggedIn = localStorage.getItem("isLoggedIn");
     socket.addEventListener("open", function (event) {
       console.log("It's open");
@@ -1165,6 +1166,10 @@ function instance($$self, $$props, $$invalidate) {
       $$invalidate(0, message = JSON.parse(event.data));
       console.log(message);
     });
+  });
+  onDestroy(function () {
+    socket.close();
+    console.log("It's Closed");
   });
 
   var handleSubmit = function handleSubmit() {
@@ -1186,12 +1191,14 @@ function instance($$self, $$props, $$invalidate) {
   $$self.$capture_state = function () {
     return {
       onMount: onMount,
+      onDestroy: onDestroy,
       Loading: Loading,
       Question: Question,
       answers: answers,
       socket: socket,
       message: message,
       isLoggedIn: isLoggedIn,
+      url: url,
       handleSubmit: handleSubmit,
       $answers: $answers
     };
@@ -1201,6 +1208,7 @@ function instance($$self, $$props, $$invalidate) {
     if ("socket" in $$props) socket = $$props.socket;
     if ("message" in $$props) $$invalidate(0, message = $$props.message);
     if ("isLoggedIn" in $$props) isLoggedIn = $$props.isLoggedIn;
+    if ("url" in $$props) url = $$props.url;
   };
 
   if ($$props && "$$inject" in $$props) {

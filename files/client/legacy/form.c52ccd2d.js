@@ -1,4 +1,4 @@
-import { _ as _inherits, a as _getPrototypeOf, b as _possibleConstructorReturn, c as _classCallCheck, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, s as safe_not_equal, g as element, t as text, f as space, k as claim_element, l as children, m as claim_text, h as detach_dev, j as claim_space, n as attr_dev, o as add_location, p as insert_dev, r as append_dev, C as listen_dev, D as prevent_default, u as noop, E as run_all, v as validate_slots, F as onMount, G as globals } from './client.e2814c65.js';
+import { _ as _inherits, a as _getPrototypeOf, b as _possibleConstructorReturn, c as _classCallCheck, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, s as safe_not_equal, g as element, t as text, f as space, k as claim_element, l as children, m as claim_text, h as detach_dev, j as claim_space, n as attr_dev, o as add_location, p as insert_dev, r as append_dev, C as listen_dev, D as prevent_default, u as noop, E as run_all, v as validate_slots, F as onMount, G as onDestroy, H as globals } from './client.56a8e490.js';
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -179,44 +179,44 @@ function create_fragment(ctx) {
     h: function hydrate() {
       attr_dev(input0, "name", "question");
       attr_dev(input0, "type", "text");
-      add_location(input0, file, 49, 25, 1741);
-      add_location(label0, file, 49, 8, 1724);
-      add_location(p, file, 52, 16, 1859);
+      add_location(input0, file, 55, 25, 1847);
+      add_location(label0, file, 55, 8, 1830);
+      add_location(p, file, 58, 16, 1965);
       attr_dev(input1, "type", "radio");
       input1.value = "radio";
       attr_dev(input1, "id", "radio");
       attr_dev(input1, "name", "quiz_type");
-      add_location(input1, file, 53, 16, 1895);
+      add_location(input1, file, 59, 16, 2001);
       attr_dev(label1, "for", "radio");
-      add_location(label1, file, 54, 16, 1975);
+      add_location(label1, file, 60, 16, 2081);
       attr_dev(input2, "type", "radio");
       input2.value = "checkbox";
       attr_dev(input2, "id", "checkbox");
       attr_dev(input2, "name", "quiz_type");
-      add_location(input2, file, 55, 16, 2025);
+      add_location(input2, file, 61, 16, 2131);
       attr_dev(label2, "for", "checkbox");
-      add_location(label2, file, 56, 16, 2111);
-      add_location(div0, file, 51, 12, 1836);
+      add_location(label2, file, 62, 16, 2217);
+      add_location(div0, file, 57, 12, 1942);
       attr_dev(label3, "for", "option1");
-      add_location(label3, file, 59, 16, 2219);
+      add_location(label3, file, 65, 16, 2325);
       attr_dev(input3, "type", "text");
       attr_dev(input3, "name", "option1");
       attr_dev(input3, "class", "option");
-      add_location(input3, file, 60, 16, 2276);
+      add_location(input3, file, 66, 16, 2382);
       attr_dev(div1, "class", "py-5");
-      add_location(div1, file, 58, 12, 2183);
+      add_location(div1, file, 64, 12, 2289);
       attr_dev(div2, "class", "py-5 options");
-      add_location(div2, file, 50, 8, 1796);
+      add_location(div2, file, 56, 8, 1902);
       attr_dev(button0, "type", "submit");
       attr_dev(button0, "class", "btn svelte-angot5");
-      add_location(button0, file, 63, 8, 2373);
-      add_location(form, file, 48, 4, 1668);
+      add_location(button0, file, 69, 8, 2479);
+      add_location(form, file, 54, 4, 1774);
       attr_dev(button1, "type", "button");
       attr_dev(button1, "class", "btn svelte-angot5");
-      add_location(button1, file, 66, 8, 2469);
+      add_location(button1, file, 72, 8, 2575);
       attr_dev(div3, "class", "py-3");
-      add_location(div3, file, 65, 4, 2441);
-      add_location(div4, file, 47, 0, 1657);
+      add_location(div3, file, 71, 4, 2547);
+      add_location(div4, file, 53, 0, 1763);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div4, anchor);
@@ -287,15 +287,19 @@ function instance($$self, $$props, $$invalidate) {
       $$props.$$scope;
   validate_slots("Form", slots, []);
   var socket;
+  var url = window.location.host;
   onMount(function () {
-    url = window.location.host;
-    socket = new WebSocket("ws://".concat(str(url), "/ws/demo"));
+    socket = new WebSocket("ws://".concat(url, "/ws/demo"));
     socket.addEventListener("open", function (event) {
       console.log("It's open");
     });
     socket.addEventListener("message", function (event) {
       console.log(event);
     });
+  });
+  onDestroy(function () {
+    socket.close();
+    console.log("It's Closed");
   });
 
   var handleSubmit = function handleSubmit(event) {
@@ -328,7 +332,9 @@ function instance($$self, $$props, $$invalidate) {
   $$self.$capture_state = function () {
     return {
       onMount: onMount,
+      onDestroy: onDestroy,
       socket: socket,
+      url: url,
       handleSubmit: handleSubmit,
       addOption: addOption
     };
@@ -336,6 +342,7 @@ function instance($$self, $$props, $$invalidate) {
 
   $$self.$inject_state = function ($$props) {
     if ("socket" in $$props) socket = $$props.socket;
+    if ("url" in $$props) url = $$props.url;
   };
 
   if ($$props && "$$inject" in $$props) {

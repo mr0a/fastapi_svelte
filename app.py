@@ -27,8 +27,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="files"), name="static")
-
 templates = Jinja2Templates(directory="files")
 
 app.add_middleware(SessionMiddleware, secret_key="!secret")
@@ -47,24 +45,23 @@ oauth.register(
 
 
 @app.route('/')
+@app.route('/form')
+@app.route('/quiz')
+@app.route('/blog')
+@app.route('/blog/{something}')
+@app.route('/about')
 async def homepage(request: Request):
     user = request.session.get('user')
     # breakpoint()
-    if user:
-        data = json.dumps(user)
-        html = (
-            f'<pre>{data}</pre>'
-            f'<a href="/logout">logout</a><img src={user["picture"]}>'
-            '<form><input name="name"><input name="email"><input type=submit></form>'
-        )
-        print(request.query_params.get('name'))
-        name = user['name']
-        email = user['email']
-        url = "https://script.google.com/macros/s/AKfycbydq--_cfmrvQnKCIVZMfHHY6w1VI8KfKw5czR6YhDZG0AOznh3me0ij55l4bcwDw5Q/exec"
-        params = {"name": name, "email": email}
-        requests.post(url, params)
+    # if user:
+        # name = user['name']
+        # email = user['email']
+        # url = "https://script.google.com/macros/s/AKfycbydq--_cfmrvQnKCIVZMfHHY6w1VI8KfKw5czR6YhDZG0AOznh3me0ij55l4bcwDw5Q/exec"
+        # params = {"name": name, "email": email}
+        # requests.post(url, params)
         # return HTMLResponse(html)
     return templates.TemplateResponse('index.html', {"request": request})
+
 
 
 @app.route('/login')
@@ -83,9 +80,9 @@ async def auth(request: Request):
     request.session['user'] = dict(user)
     return RedirectResponse(url='/')
 
-@app.get("/chat")
-async def get(request: Request):
-    return templates.TemplateResponse('chat.html', {'request': request})
+# @app.get("/chat")
+# async def get(request: Request):
+#     return templates.TemplateResponse('chat.html', {'request': request})
 
 
 @app.route('/api/v1/user')
@@ -184,6 +181,10 @@ async def sendQuestion(websocket: WebSocket, question: str):
 async def logout(request: Request):
     request.session.pop('user', None)
     return RedirectResponse(url='/')
+
+
+app.mount("/", StaticFiles(directory="files"), name="static")
+
 
 
 # if __name__ == '__main__':
