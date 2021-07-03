@@ -188,8 +188,8 @@ async def logout(request: Request):
 async def connections(request):
     return JSONResponse(
         {
-            'active': manager.active_connections,
-            'sent': manager.sent_connections
+            'active': len(manager.active_connections),
+            'sent': len(manager.sent_connections)
         })
 
 
