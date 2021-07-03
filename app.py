@@ -67,6 +67,7 @@ async def homepage(request: Request):
 @app.route('/login')
 async def login(request: Request):
     redirect_uri = request.url_for('auth')
+    print(redirect_uri)
     return await oauth.google.authorize_redirect(request, redirect_uri)
 
 
@@ -181,6 +182,15 @@ async def sendQuestion(websocket: WebSocket, question: str):
 async def logout(request: Request):
     request.session.pop('user', None)
     return RedirectResponse(url='/')
+
+
+@app.route('/connections')
+async def connections(request):
+    return JSONResponse(
+        {
+            'active': manager.active_connections,
+            'sent': manager.sent_connections
+        })
 
 
 app.mount("/", StaticFiles(directory="files"), name="static")
