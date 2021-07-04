@@ -157,20 +157,20 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_json()
             print(data)
             try:
-                if data['new_question'] == True:
+                if data['type'] == 'question':
                     await manager.broadcast(data)
                     # await manager.send_personal_message(f"You wrote: {data}", websocket)
             except Exception as e:
                 print(e)
-            try:
-                if data['answer'] == True:
-                    url = "https://script.google.com/macros/s/AKfycbydq--_cfmrvQnKCIVZMfHHY6w1VI8KfKw5czR6YhDZG0AOznh3me0ij55l4bcwDw5Q/exec"
-                    del data['answer']
-                    params = {'name': str(json.dumps(data))+'\n'}
-                    print(requests.post(url, params))                
-            except Exception as e:
-                print(e)
-                print("Some Error Occurred")
+            # try:
+            #     if data['answer'] == True:
+            #         url = "https://script.google.com/macros/s/AKfycbydq--_cfmrvQnKCIVZMfHHY6w1VI8KfKw5czR6YhDZG0AOznh3me0ij55l4bcwDw5Q/exec"
+            #         del data['answer']
+            #         params = {'name': str(json.dumps(data))+'\n'}
+            #         print(requests.post(url, params))                
+            # except Exception as e:
+            #     print(e)
+            #     print("Some Error Occurred")
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         # await manager.broadcast("Client  left the chat")
@@ -189,7 +189,8 @@ async def connections(request):
     return JSONResponse(
         {
             'active': len(manager.active_connections),
-            'sent': len(manager.sent_connections)
+            'sent': len(manager.sent_connections),
+            'questions': manager.Questions
         })
 
 
@@ -199,4 +200,4 @@ app.mount("/", StaticFiles(directory="files"), name="static")
 
 # if __name__ == '__main__':
 #     import uvicorn
-#     uvicorn.run(app, port=8000, reload=True)
+#     uvicorn.run(app, port=8000)
