@@ -100,10 +100,13 @@ class ConnectionManager:
         self.active_connections: List[WebSocket] = []
         self.sent_connections: List[WebSocket] = []
         self.Questions: List[Dict] = []
+        self.QuestionSender: List[Dict] = []
+        self.Answers: List[Dict] = []
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.active_connections.append(websocket)
+        await self.send_personal_message({'type': 'ConnectionConfirmation'}, websocket)
         if websocket not in self.sent_connections and len(self.Questions) > 0:
             await self.send_personal_message(self.Questions[-1], websocket)
             self.sent_connections.append(websocket)
@@ -158,7 +161,15 @@ async def websocket_endpoint(websocket: WebSocket):
             print(data)
             try:
                 if data['type'] == 'question':
+                    manager.Questions = [data]
+                    manager.QuestionSender = [websocket]
+                    manager.Answers = []
                     await manager.broadcast(data)
+
+                if data['type'] == 'answer':
+                    manager.Answers.append(data['data'])
+                    msg = {'type': 'answer-update', 'data': manager.Answers }
+                    await manager.send_personal_message(msg, manager.QuestionSender[-1])
                     # await manager.send_personal_message(f"You wrote: {data}", websocket)
             except Exception as e:
                 print(e)
@@ -190,7 +201,9 @@ async def connections(request):
         {
             'active': len(manager.active_connections),
             'sent': len(manager.sent_connections),
-            'questions': manager.Questions
+            'questions': manager.Questions,
+            'sender': len(manager.QuestionSender),
+            'answers': manager.Answers
         })
 
 

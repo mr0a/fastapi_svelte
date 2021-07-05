@@ -4,21 +4,22 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Quiz Form</title>
+		<title>Quiz Form</title><meta name="google-signin-client_id" content="448076461943-2ukn311n3l386pg26h9i180p2cim1q45.apps.googleusercontent.com" data-svelte="svelte-1tscwua"><script src="https://apis.google.com/js/platform.js" async defer data-svelte="svelte-1tscwua"></script>
 
 		
 
-		<link rel="modulepreload" href="/./_app/start-4608fa4d.js">
-		<link rel="modulepreload" href="/./_app/chunks/vendor-3f74641c.js">
-		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-33ae29c8.js">
-		<link rel="modulepreload" href="/./_app/pages/form.svelte-469f484b.js">
+		<link rel="modulepreload" href="/./_app/start-87ae8259.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-be7945d9.js">
+		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-11b9e1e0.js">
+		<link rel="modulepreload" href="/./_app/chunks/auth-baf14a9b.js">
+		<link rel="modulepreload" href="/./_app/pages/form.svelte-196f5fca.js">
 		<link rel="modulepreload" href="/./_app/chunks/ws_con-85f84094.js">
 		<link rel="stylesheet" href="/./_app/assets/start-8077b9bf.css">
-		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-929029f1.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-7c3fb49e.css">
 		<link rel="stylesheet" href="/./_app/assets/pages/form.svelte-6d42715e.css">
 
 		<script type="module">
-			import { start } from "/./_app/start-4608fa4d.js";
+			import { start } from "/./_app/start-87ae8259.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":"/."},
@@ -31,8 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/./_app/pages/__layout.svelte-33ae29c8.js"),
-						import("/./_app/pages/form.svelte-469f484b.js")
+						import("/./_app/pages/__layout.svelte-11b9e1e0.js"),
+						import("/./_app/pages/form.svelte-196f5fca.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -54,12 +55,18 @@
 		<div id="svelte">
 
 
-<nav class="svelte-15xp2ew"><ul class="svelte-15xp2ew"><li class="svelte-15xp2ew"><a href="." class="svelte-15xp2ew">home</a></li>
-<li class="svelte-15xp2ew"><a href="about" class="svelte-15xp2ew">about</a></li>
 
 
-<li class="svelte-15xp2ew"><a href="quiz" class="svelte-15xp2ew">quiz</a></li>
-<li class="svelte-15xp2ew"><a aria-current="page" href="form" class="svelte-15xp2ew">form</a></li></ul></nav>
+<nav class="svelte-1vgje8q"><ul class="svelte-1vgje8q"><li class="svelte-1vgje8q"><a href="." class="svelte-1vgje8q">home</a></li>
+<li class="svelte-1vgje8q"><a href="about" class="svelte-1vgje8q">about</a></li>
+
+
+
+
+
+
+<li class="svelte-1vgje8q"><span class="someastyle svelte-1vgje8q"><div class="g-signin2" data-onsuccess="onSignIn"></div></span></li></ul>
+</nav>
 
 <main class="svelte-9j32li">
 
