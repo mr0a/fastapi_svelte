@@ -1,1 +1,0 @@
-import{S as t,i as s,s as e,z as n}from"../chunks/vendor-be7945d9.js";async function r(){return{headers:{Location:"/login"},status:302}}function o(t,s,e){return n((()=>{})),[r]}export default class extends t{constructor(t){super(),s(this,t,o,null,e,{get:0})}get get(){return r}}
